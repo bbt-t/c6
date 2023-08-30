@@ -14,7 +14,7 @@ def block_user(user_id) -> None:
     :param user_id: users id
     """
     user = CustomUser.objects.get(id=user_id)
-    user.is_active = False  # Блокировка пользователя
+    user.is_active = False
     user.save()
 
 
@@ -47,7 +47,7 @@ def create_group_and_permissions(sender, **kwargs) -> None:
     """
     Create signal.
     """
-    if sender.name == "custom_auth":  # было mailing
+    if sender.name == "custom_auth":
         create_manager_group_and_permissions(sender, **kwargs)
 
 

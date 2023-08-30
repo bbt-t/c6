@@ -21,17 +21,12 @@ class HomeView(View):
         return render(request, self.template_name, context={"ctx": ctx})
 
 
-# @method_decorator(login_required(login_url='/auth/login/'), name='dispatch')
-# @method_decorator(user_passes_test(is_member_of_desired_group, login_url='/auth/login/'), name='dispatch')
 class PostDetailView(DetailView):
     model = BlogPost
     context_object_name = "blog_post"
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
-        # сравниваю id записи и пользователя, который запрашивает запись в БД
-        # if obj.creator:
-        #     if obj.creator.id == self.request.user.id:
         obj.views += 1
         obj.save()
 

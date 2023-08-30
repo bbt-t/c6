@@ -20,7 +20,6 @@
             <img src="{% media_path blog_post.image %}" class="image-container-auto" alt="blog_post.title">
 
             <p class="card-text">{{ blog_post.content | linebreaks | safe }}</p>
-{#            <a href="{% url 'edit_post' id=blog_post.pk %}" class="btn btn-dark">редактировать</a>#}
         </div>
         <div class="card-footer text-muted">
             <p>Просмотров: {{ blog_post.views }}</p>
