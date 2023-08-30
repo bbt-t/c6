@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "d6"
+version = "0.1.0"
+description = ""
+authors = ["bbt-t <zlukcss@gmail.com>"]
+readme = "README.md"
+packages = [{include = "d6"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.4"
+pillow = "^10.0.0"
+redis = "^5.0.0"
+psycopg = {extras = ["binary"], version = "^3.1.10"}
+django-apscheduler = "^0.6.2"
+pytils = "^0.4.1"
+djangorestframework = "^3.14.0"
+django-filter = "^23.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
