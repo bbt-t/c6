@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block pricing-header %}
+    <h2>Логи</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="container px-4 py-5" id="featured-3">
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+
+            {% for obj in log_schedule_messages %}
+
+                <div class="feature col">
+                    <p>Время отправки: {{ obj.attempt_time }}</p>
+                    <p>Статус: {{ obj.get_interval_status_ru }}</p>
+                    {% if obj.response %}
+                        <p>Сообщение: {{ obj.response | safe }}</p>
+                    {% endif %}
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

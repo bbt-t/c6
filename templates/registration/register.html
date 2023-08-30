@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Create an account{% endblock %}
+
+{% block pricing-header %}
+    <h2>Заполни форму</h2>
+{% endblock %}
+{% block content %}
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <div class="alert alert-success text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <form method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input class="btn btn-primary" type="submit" value="Создай мне аккаунт!"></p>
+    </form>
+
+{% endblock %}
+
+

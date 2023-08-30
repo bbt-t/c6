@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block pricing-header %}
+    <h2>Клиенты</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom">Мои клиенты</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            {% for client in clients %}
+
+                <div class="feature col">
+                    <p>Почта: {{ client.email }}</p>
+                    <p>Имя: {{ client.full_name }}</p>
+                    <p>Комментарий: {{ client.comment }}</p>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

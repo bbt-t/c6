@@ -1,0 +1,5 @@
+{% autoescape off %}
+    Привет! Пожалуйста, перейди по ссылке для завершения регистрации
+
+    http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
