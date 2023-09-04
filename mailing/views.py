@@ -1,7 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView
 from django.db.models import Q
@@ -11,26 +9,30 @@ from .mixins import AddCreatorMixin, CreatorOrManagerFilterMixin, AddFromCreator
 from .models import Client, EmailSchedule, Message, MailingLog
 
 
-@method_decorator(login_required(login_url="/auth/login/"), name="dispatch")
-class ClientListView(CreatorOrManagerFilterMixin, ListView):
+class ClientListView(CreatorOrManagerFilterMixin, LoginRequiredMixin, ListView):
+    login_url = "/auth/login/"
+
     model = Client
     context_object_name = "clients"
 
 
-@method_decorator(login_required(login_url="/auth/login/"), name="dispatch")
-class EmailScheduleListView(CreatorOrManagerFilterMixin, ListView):
+class EmailScheduleListView(CreatorOrManagerFilterMixin, LoginRequiredMixin, ListView):
+    login_url = "/auth/login/"
+
     model = EmailSchedule
     context_object_name = "schedule_objects"
 
 
-@method_decorator(login_required(login_url="/auth/login/"), name="dispatch")
-class MessageListView(CreatorOrManagerFilterMixin, ListView):
+class MessageListView(CreatorOrManagerFilterMixin, LoginRequiredMixin, ListView):
+    login_url = "/auth/login/"
+
     model = Message
     context_object_name = "email_schedule_messages"
 
 
-@method_decorator(login_required(login_url="/auth/login/"), name="dispatch")
-class MailingLogListView(ListView):
+class MailingLogListView(LoginRequiredMixin, ListView):
+    login_url = "/auth/login/"
+
     model = MailingLog
     context_object_name = "log_schedule_messages"
 
@@ -41,25 +43,31 @@ class MailingLogListView(ListView):
         return q.filter(Q(settings__creator=self.request.user))
 
 
-@method_decorator(login_required(login_url="/auth/login/"), name="dispatch")
 class ClientCreateView(AddCreatorMixin, LoginRequiredMixin, View):
+    login_url = "/auth/login/"
+
     template_name = "mailing/message_form.html"
     form_class = CreateClientForm
 
 
-@method_decorator(login_required(login_url="/auth/login/"), name="dispatch")
 class MessageCreateView(AddCreatorMixin, LoginRequiredMixin, View):
+    login_url = "/auth/login/"
+
     template_name = "mailing/message_form.html"
     form_class = CreateMessageForm
 
 
 class EmailScheduleCreateView(AddFromCreatorMixin, LoginRequiredMixin, CreateView):
+    login_url = "/auth/login/"
+
     model = EmailSchedule
     form_class = EmailScheduleForm
     success_url = reverse_lazy("mailing_list")
 
 
 class EmailScheduleUpdateView(AddFromCreatorMixin, LoginRequiredMixin, UpdateView):
+    login_url = "/auth/login/"
+
     model = EmailSchedule
     form_class = EmailScheduleForm
     success_url = reverse_lazy("mailing_list")
