@@ -1,3 +1,5 @@
+from smtplib import SMTPException
+
 from django.conf import settings
 from django.core.mail import send_mail
 
@@ -11,7 +13,7 @@ def send_emails(pk: int) -> None:
     """
     obj = EmailSchedule.objects.get(pk=pk)
     emails = [client.email for client in obj.clients.all()]
-    attempt = MailingLog.objects.create(
+    log = MailingLog.objects.create(
         settings=obj, status="failure", creator=obj.creator
     )
     try:
@@ -22,9 +24,9 @@ def send_emails(pk: int) -> None:
             emails,
             fail_silently=False,
         )
-    except Exception as e:
-        attempt.response = repr(e)
-    else:
-        attempt.status = "success"
+    except SMTPException as err:
+        log.response = repr(err)
+    except Exception as err:
+        print(repr(err))
     finally:
-        attempt.save()
+        log.save()
