@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "d6"
+name = "c6"
 version = "0.1.0"
 description = ""
 authors = ["bbt-t <zlukcss@gmail.com>"]
 readme = "README.md"
-packages = [{include = "d6"}]
+packages = [{include = "c6"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
