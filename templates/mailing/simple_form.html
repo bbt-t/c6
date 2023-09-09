@@ -1,0 +1,19 @@
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            {% if message.tags == "success" %}
+                <div class="alert alert-success text-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p><input class="btn btn-primary" type="submit" value="OK!"></p>
+</form>

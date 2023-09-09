@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+{% block pricing-header %}
+    <h1 class="display-4">Добро пожаловать в наш Блог</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="centered-row">
+    {% for post in all_posts %}
+        <div class="card" style="width: 18rem;">
+            <div class="image-container">
+                <img class="card-img-top" src="{% media_path post.image %}" alt="{{ post.title }}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.content | truncatewords:15 }}</p>
+                <a href="{% url 'post_detail' slug=post.slug %}" class="btn btn-dark">Читать</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

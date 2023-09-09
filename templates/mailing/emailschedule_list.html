@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block pricing-header %}
+    <h2>Рассылки</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom">Мои рассылки</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+
+            {% for obj in schedule_objects %}
+
+                <div class="feature col">
+                    <p>Время отправки: {{ obj.send_time }}</p>
+                    <p>Интервал: {{ obj.get_interval_display_ru }}</p>
+                    <p>Статус: {{ obj.get_status_display_ru }}</p>
+                    <p>Сообщение: {{ obj.message | safe }}</p>
+                    <p>Для клиентов: </p>
+                    <ul>
+
+                        {% for client in obj.clients.all %}
+                            <li>{{ client }}</li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

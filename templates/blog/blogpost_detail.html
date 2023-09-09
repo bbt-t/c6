@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+
+
+{% block title %}
+    {{ blog_post.title }}
+{% endblock %}
+
+{% block pricing-header %}
+    <h1 class="display-4">Блог</h1>
+    <p class="lead">Полный пост</p>
+{% endblock %}
+
+{% block content %}
+    <div class="card text-center">
+        <div class="card-header">
+            <h5>{{ blog_post.title }}</h5>
+        </div>
+        <div class="card-body">
+            <img src="{% media_path blog_post.image %}" class="image-container-auto" alt="blog_post.title">
+
+            <p class="card-text">{{ blog_post.content | linebreaks | safe }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            <p>Просмотров: {{ blog_post.views }}</p>
+            <p>Автор: {% full_name blog_post.creator %}
+            <p>Опубликовано: {{ blog_post.create_at }}</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+.form_container_center {
+    /* to center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container_ok {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message_ok {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.icon {
+    font-size: 48px;
+    color: #28a745;
+}
+
+.centered-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.image-container {
+    overflow: hidden;
+    max-height: 200px;
+}
+
+.image-container-auto {
+    max-width: 50%;
+    height: auto;
+}
+
+.right-div {
+    float: right;
+    width: 300px;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+
+footer {
+    height: 30px; /* Фиксированная высота */
+    padding: 100px; /* Внутренний отступ */
+}
+
+/*.login-button {*/
+/*    margin-top: 20px !important; !* пометить как наиболее важное *!*/
+/*}*/
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.success-message {
+    font-size: 18px;
+    color: green;
+}
