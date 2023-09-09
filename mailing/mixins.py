@@ -25,10 +25,11 @@ class CreatorOrManagerFilterMixin:
     """
 
     def get_queryset(self):
-        q = super().get_queryset()
-        if self.request.user.is_manager:
-            return q
-        return q.filter(creator=self.request.user)
+        if not self.request.user.is_anonymous:
+            q = super().get_queryset()
+            if self.request.user.is_manager:
+                return q
+            return q.filter(creator=self.request.user)
 
 
 class AddFromCreatorMixin:

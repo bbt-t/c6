@@ -16,7 +16,7 @@ django-apscheduler = "^0.6.2"
 pytils = "^0.4.1"
 djangorestframework = "^3.14.0"
 django-filter = "^23.2"
-
+drf-yasg = "^1.21.7"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"

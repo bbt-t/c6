@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.postgres",  # to add a search
+    'drf_yasg',
     "rest_framework.authtoken",
     "rest_framework",
     "django_apscheduler",
@@ -135,7 +136,7 @@ EMAIL_FROM = EMAIL_HOST_USER
 PASSWORD_RESET_TIMEOUT = 14400
 
 
-CACHE_ENABLED = getenv("CACHE_ENABLED", 1)
+CACHE_ENABLED = getenv("CACHE_ENABLED", 0)
 
 if CACHE_ENABLED:
     CACHES = {
